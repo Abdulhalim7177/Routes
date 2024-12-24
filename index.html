@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Route Finder with Directions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- <script src="/js/mapping.js"></script> -->
+
+    <style>
+        #map {
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex flex-col h-screen">
+        <!-- Header -->
+        <header class="bg-blue-600 text-white p-4 text-center">
+            <h1 class="text-xl font-bold">Route Finder with Directions</h1>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex flex-col md:flex-row flex-1">
+            <!-- Map -->
+            <div id="map" class="flex-1"></div>
+
+            <!-- Sidebar -->
+            <div class="w-full md:w-80 p-4 bg-white shadow-lg relative">
+                <h2 class="text-lg font-semibold mb-4">Route Details</h2>
+
+                <!-- Place Search -->
+                <div class="mb-4">
+                    <label for="place" class="block text-sm font-medium">Search Place:</label>
+                    <input id="place" type="text" placeholder="Enter place name" class="w-full border-gray-300 rounded-md shadow-sm mb-2">
+                    <button id="search-place" class="w-full bg-green-600 text-white py-2 rounded-md">Search</button>
+                </div><!-- Mode of Transportation -->
+                <div class="mb-4">
+                    <label for="mode" class="block text-sm font-medium">Mode of Transportation:</label>
+                    <select id="mode" class="w-full border-gray-300 rounded-md shadow-sm">
+                        <option value="driving">Driving</option>
+                        <option value="walking">Walking</option>
+                        <option value="cycling">Cycling</option>
+                    </select>
+                </div>
+                
+
+                <!-- Get Location -->
+                <button id="getLocationBtn" class="w-full bg-purple-600 text-white py-2 rounded-md mb-4">Get My Location</button>
+
+                <!-- Route Details -->
+                <div id="details" class="mt-4 text-sm">
+                    <p><strong>Distance:</strong> <span id="distance">-</span></p>
+                    <p><strong>Duration:</strong> <span id="duration">-</span></p>
+                </div>
+
+                <!-- Step-by-step Directions
+                <div id="directions-container" class="hidden mt-4">
+                    <h3 class="text-md font-semibold">Step-by-Step Directions</h3>
+                    <ul id="directions" class="list-disc pl-4 text-sm"></ul>
+                </div> -->
+                
+                <button id="reset" class="w-full bg-red-600 text-white py-2 rounded-md mt-4">Reset</button>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
